@@ -1,0 +1,273 @@
+.App {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+}
+
+.status-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.connection-status,
+.app-status {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.connection-status {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.button-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+}
+
+.talk-button {
+  width: 90vmin;
+  height: 90vmin;
+  max-width: 500px;
+  max-height: 500px;
+  border-radius: 50%;
+  border: 8px solid rgba(255, 255, 255, 0.3);
+  background: linear-gradient(145deg, #5a67d8, #6b46c1);
+  color: white;
+  font-size: 3rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.talk-button:hover:not(:disabled) {
+  transform: scale(1.05);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+}
+
+.talk-button:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.talk-button.recording {
+  background: linear-gradient(145deg, #ef4444, #dc2626);
+  border-color: rgba(255, 255, 255, 0.5);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.talk-button.processing {
+  background: linear-gradient(145deg, #f59e0b, #d97706);
+  cursor: not-allowed;
+  animation: processing 2s linear infinite;
+}
+
+.talk-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+.button-text {
+  line-height: 1.2;
+  word-break: break-word;
+}
+
+.instructions {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.instructions p {
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 500;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  margin: 0;
+}
+
+.permission-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.permission-warning {
+  color: #ffd700 !important;
+  font-weight: 600 !important;
+  animation: pulse-warning 2s ease-in-out infinite;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.permission-info {
+  color: #87ceeb !important;
+  font-weight: 500;
+  text-align: center;
+}
+
+.permission-button {
+  background: linear-gradient(145deg, #4ade80, #22c55e);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 1rem 2rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.permission-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.permission-button:active {
+  transform: scale(0.95);
+}
+
+@keyframes pulse-warning {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Screen reader only content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Animations */
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), 0 0 0 0 rgba(239, 68, 68, 0.7);
+  }
+  50% {
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4), 0 0 0 30px rgba(239, 68, 68, 0);
+  }
+}
+
+@keyframes processing {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+  
+  .connection-status,
+  .app-status {
+    font-size: 1.2rem;
+  }
+  
+  .talk-button {
+    font-size: 2rem;
+  }
+  
+  .instructions p {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .talk-button {
+    font-size: 1.5rem;
+    padding: 1.5rem;
+  }
+  
+  .connection-status,
+  .app-status {
+    font-size: 1rem;
+  }
+  
+  .instructions p {
+    font-size: 1.2rem;
+  }
+  
+  .permission-button {
+    font-size: 1.2rem;
+    padding: 0.8rem 1.5rem;
+  }
+  
+  .permission-warning,
+  .permission-info {
+    font-size: 1.3rem;
+  }
+}
+
+/* High contrast mode for accessibility */
+@media (prefers-contrast: high) {
+  .talk-button {
+    border-width: 10px;
+    border-color: white;
+  }
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .talk-button {
+    transition: none;
+  }
+  
+  .talk-button.recording {
+    animation: none;
+  }
+  
+  .talk-button.processing {
+    animation: none;
+  }
+}
+
